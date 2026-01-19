@@ -20,7 +20,24 @@ En esta práctica se implementa una versión sencilla de `Queue` usando listas e
 
 ---
 
-## Diagrama (Mermaid)
+## Investigación
+
+### ¿Por qué `pop(0)` es O(n)?
+En Python, las listas están implementadas como arreglos dinámicos. Cuando se elimina el primer elemento con `pop(0)`, todos los elementos restantes deben desplazarse una posición hacia la izquierda para llenar el hueco, lo cual requiere O(n) operaciones.
+
+### Alternativas eficientes
+- **`collections.deque`**: Implementa una cola de doble extremo con operaciones O(1) tanto para agregar como para remover en ambos extremos. Internamente usa una lista doblemente enlazada de bloques.
+- **Cola circular con arreglo**: Usa dos índices (frente y final) que avanzan de forma circular, evitando el desplazamiento de elementos.
+- **Lista enlazada**: Mantiene referencias al primer y último nodo, permitiendo inserción y eliminación en O(1).
+
+### Aplicaciones de Queue en algoritmos
+- **BFS (Breadth-First Search)**: Recorre grafos nivel por nivel usando una cola para procesar nodos en orden de descubrimiento.
+- **Scheduling de procesos**: Los sistemas operativos usan colas para manejar procesos en espera (Round Robin, FIFO scheduling).
+- **Buffer de datos**: En comunicaciones, las colas manejan paquetes que llegan más rápido de lo que se pueden procesar.
+
+---
+
+## Diagrama de flujo
 ```mermaid
 sequenceDiagram
     participant M as Main (programa)
@@ -61,42 +78,22 @@ sequenceDiagram
 - `is_empty()`: verificar si la cola está vacía.
 - `size()`: obtener el número de elementos.
 
-### Código en Python (simplificado)
+### Código en Python
+El código completo se encuentra en `src/queue.py`. A continuación se muestran las operaciones principales:
+
 ```python
-# File: src/queue.py
+def enqueue(self, item):
+    self.data.append(item)  # Agrega al final
 
-class Queue:
-    def __init__(self):
-        self.data = []
+def dequeue(self):
+    if self.is_empty():
+        raise IndexError("Queue is empty")
+    return self.data.pop(0)  # Remueve del frente
 
-    def is_empty(self):
-        return len(self.data) == 0
-
-    def size(self):
-        return len(self.data)
-
-    def enqueue(self, item):
-        self.data.append(item)
-
-    def dequeue(self):
-        if self.is_empty():
-            raise IndexError("Queue is empty")
-        return self.data.pop(0)
-
-    def front(self):
-        if self.is_empty():
-            raise IndexError("Queue is empty")
-        return self.data[0]
-
-if __name__ == "__main__":
-    q = Queue()
-    q.enqueue(10)
-    q.enqueue(20)
-    q.enqueue(30)
-    print("Cola inicial:", q.data)
-    print("Frente:", q.front())
-    print("Dequeue:", q.dequeue())
-    print("Cola después:", q.data)
+def front(self):
+    if self.is_empty():
+        raise IndexError("Queue is empty")
+    return self.data[0]  # Consulta sin remover
 ```
 
 ---
@@ -132,9 +129,33 @@ Durante la práctica aprendí que:
 
 ---
 
+## Casos de prueba
+
+| Caso | Operación | Estado inicial | Resultado esperado | Estado final |
+|------|-----------|----------------|-------------------|--------------|
+| 1 | `enqueue(10)` | `[]` | - | `[10]` |
+| 2 | `enqueue(20)` | `[10]` | - | `[10, 20]` |
+| 3 | `front()` | `[10, 20]` | `10` | `[10, 20]` |
+| 4 | `dequeue()` | `[10, 20]` | `10` | `[20]` |
+| 5 | `size()` | `[20]` | `1` | `[20]` |
+| 6 | `is_empty()` | `[20]` | `False` | `[20]` |
+| 7 | `dequeue()` | `[20]` | `20` | `[]` |
+| 8 | `is_empty()` | `[]` | `True` | `[]` |
+| 9 | `dequeue()` | `[]` | `IndexError` | `[]` |
+| 10 | `front()` | `[]` | `IndexError` | `[]` |
+
+---
+
 ## Cómo ejecutar
 ```bash
 python src/queue.py
 ```
 
 ---
+
+## Referencias
+
+- Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). *Introduction to Algorithms* (3rd ed.). MIT Press.
+- Python Software Foundation. (2024). *collections — Container datatypes*. https://docs.python.org/3/library/collections.html#collections.deque
+- GeeksforGeeks. (2024). *Queue Data Structure*. https://www.geeksforgeeks.org/queue-data-structure/
+- OpenAI. (2024). ChatGPT [Modelo de lenguaje]. Utilizado para aclarar dudas sobre la complejidad de `pop(0)` en listas de Python. https://chat.openai.com/
