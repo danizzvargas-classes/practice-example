@@ -1,7 +1,8 @@
 # EDA II – Práctica 0: Queue en Python
 
 Alumnos:
-- Daniel Vargas
+- Rick Sánchez
+- Morty Smith
 
 ---
 
@@ -121,11 +122,16 @@ Cola después: [20, 30]
 ---
 
 ## Conclusiones
-Durante la práctica aprendí que:
-- La cola (Queue) es una estructura muy importante porque se usa en muchos problemas reales, como la cola de procesos de un sistema operativo (donde se atienden tareas en orden), en las colas de impresión (para que los documentos se impriman en el orden en que llegan)
-- Con la implementación sencilla en Python entendí mejor cómo funciona el orden FIFO, ya que se ve claramente quién entra primero y quién sale primero, igual que en una fila de personas en el banco.
-- Me di cuenta de que enqueue es rápido porque Python agrega al final de la lista en O(1), mientras que dequeue es más costoso porque al quitar el primer elemento la lista debe recorrer todos los demás hacia la izquierda, lo cual es O(n). Esto me motiva a investigar implementaciones más eficientes como colas circulares o enlazadas, donde ambas operaciones son O(1).
-- Al programar la cola pude reforzar lo que son las estructuras lineales y cómo se aplican en la práctica, no solo en teoría.
+
+### Rick Sánchez
+- Usar `pop(0)` en una lista es una decisión de diseño terriblemente ineficiente. O(n) para un simple dequeue es inaceptable cuando `collections.deque` existe y ofrece O(1) en ambas operaciones. La implementación funciona, pero no escala.
+- El análisis de complejidad me confirmó que siempre hay que pensar en el peor caso. Una cola con millones de elementos sería un desastre con esta implementación básica.
+- Investigando encontré que las colas circulares son elegantes: usan aritmética modular para reciclar espacio sin mover elementos. Es la solución obvia que cualquier científico competente implementaría.
+
+### Morty Smith
+- Al principio no entendía bien la diferencia entre una pila y una cola, pero con esta práctica me quedó claro: en la cola el primero que llega es el primero que sale, como cuando haces fila para comprar algo.
+- Me costó entender por qué `pop(0)` es lento, pero el diagrama me ayudó a visualizar cómo todos los elementos se tienen que mover cuando quitas el primero. Es como cuando la primera persona de una fila se va y todos dan un paso adelante.
+- Me gustó ver que las colas se usan en cosas reales como BFS para recorrer grafos. Eso me motiva a seguir aprendiendo estructuras de datos.
 
 ---
 
