@@ -104,9 +104,9 @@ Ejecución esperada:
 
 ```text
 Cola inicial: [10, 20, 30]
-Frente: 10
 Dequeue: 10
 Cola después: [20, 30]
+Todas las validaciones pasaron correctamente.
 ```
 
 ---
@@ -132,23 +132,6 @@ Cola después: [20, 30]
 - Al principio no entendía bien la diferencia entre una pila y una cola, pero con esta práctica me quedó claro: en la cola el primero que llega es el primero que sale, como cuando haces fila para comprar algo.
 - Me costó entender por qué `pop(0)` es lento, pero el diagrama me ayudó a visualizar cómo todos los elementos se tienen que mover cuando quitas el primero. Es como cuando la primera persona de una fila se va y todos dan un paso adelante.
 - Me gustó ver que las colas se usan en cosas reales como BFS para recorrer grafos. Eso me motiva a seguir aprendiendo estructuras de datos.
-
----
-
-## Casos de prueba
-
-| Caso | Operación | Estado inicial | Resultado esperado | Estado final |
-|------|-----------|----------------|-------------------|--------------|
-| 1 | `enqueue(10)` | `[]` | - | `[10]` |
-| 2 | `enqueue(20)` | `[10]` | - | `[10, 20]` |
-| 3 | `front()` | `[10, 20]` | `10` | `[10, 20]` |
-| 4 | `dequeue()` | `[10, 20]` | `10` | `[20]` |
-| 5 | `size()` | `[20]` | `1` | `[20]` |
-| 6 | `is_empty()` | `[20]` | `False` | `[20]` |
-| 7 | `dequeue()` | `[20]` | `20` | `[]` |
-| 8 | `is_empty()` | `[]` | `True` | `[]` |
-| 9 | `dequeue()` | `[]` | `IndexError` | `[]` |
-| 10 | `front()` | `[]` | `IndexError` | `[]` |
 
 ---
 
