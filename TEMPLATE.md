@@ -27,9 +27,9 @@ Explica cómo se abordó el problema a resolver. Incluye fragmentos de código s
 ## Resultados
 Muestra ejemplos de ejecución o pruebas realizadas (preferible usar texto a imágenes).
 
-Pregunta clave: **[Pregunta]**
+**[Pregunta(s) clave]**
 
-Respuesta...
+Respuestas...
 
 <!-- Opcional: agrega un análisis de complejidad temporal/espacial si aporta al reporte. -->
 

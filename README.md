@@ -54,7 +54,7 @@ Cola después: [20, 30]
 Todas las validaciones pasaron correctamente.
 ```
 
-Pregunta clave: **¿En qué escenario real usarías la lista de Python sobre `collections.deque`, a pesar de que `dequeue()` sea O(n)?**
+**¿En qué escenario real usarías la lista de Python sobre `collections.deque`, a pesar de que `dequeue()` sea O(n)?**
 
 Cuando la cola siempre va a ser muy pequeña (unos cuantos elementos) o de vida muy corta — ahí el overhead de importar y usar `deque` no se justifica, y la simplicidad de una lista es preferible. También en scripts de un solo uso donde el rendimiento no importa, priorizamos legibilidad sobre eficiencia.
 
