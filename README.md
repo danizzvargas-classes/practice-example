@@ -5,6 +5,9 @@ Instrucciones: [INSTRUCTIONS.md](./INSTRUCTIONS.md)
 ## Alumnos
 - 315012345 - Rick Sánchez
 - 315067890 - Morty Smith
+- 123456789 - Daniel Vargas
+
+Cualquier cosa
 
 ---
 
